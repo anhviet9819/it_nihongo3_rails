@@ -2,7 +2,6 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  
   # GET /books
   # GET /books.json
   def index
@@ -12,6 +11,7 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @book_review = BookReview.new
   end
 
   # GET /books/new
@@ -72,6 +72,6 @@ class BooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def book_params
       #params.require(:book).permit(:title, :number_of_pages)
-      params.require(:book).permit(:title, :number_of_pages, :image)
+      params.require(:book).permit(:title, :number_of_pages, :image, :detail)
     end
 end
